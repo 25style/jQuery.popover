@@ -5,6 +5,9 @@ documentation, visit http://daveyyzermans.nl/jquery/popover/demo.html
 
 # Changelog
 
+v1.0.5
+Added preventChildrenPropagation parameter.
+
 v1.0.4
 The preventDefault parameter now does what it's supposed to. preventDefault on the element the popover's invoked on instead of the popover itself.
 

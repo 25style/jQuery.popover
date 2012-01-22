@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="popover.css" type="text/css" media="screen" />
 		
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script type="text/javascript" src="jquery.popover-1.0.4.js"></script>
+		<script type="text/javascript" src="jquery.popover-1.0.5.js"></script>
 		<script type="text/javascript">
 		/* <![CDATA[ */
 			jQuery(document).ready(function($) {
@@ -438,6 +438,13 @@ $(&quot;#ex7b&quot;).click(function(event) {
 					<td>v1.0.0</td>
 				</tr>
 				<tr>
+					<td>preventChildrenPropagation</td>
+					<td>bool</td>
+					<td><a name="parameters_preventChildrenPropagation" title="preventChildrenPropagation"></a>Execute <code>event.preventPropagation()</code> method on all children of the popover, so <code>click</code> events won't bubble up and hide the popover.</td>
+					<td>true</td>
+					<td>v1.0.5</td>
+				</tr>
+				<tr>
 					<td>hideOnHTMLClick</td>
 					<td>bool</td>
 					<td><a name="parameters_hideOnHTMLClick" title="hideOnHTMLClick"></a>Hide all popovers when clicked outside of them. <em>This is currently a semi-global variable. See <a href="#methods_fadeOutAll">this</a>.</em></td>
@@ -468,7 +475,9 @@ $(&quot;#ex7b&quot;).click(function(event) {
 	fadeSpeed: 160,
 	trigger: 'click',
 	preventDefault: true,
-	hideOnHTMLClick: true
+	preventChildrenPropagation: true,
+	hideOnHTMLClick: true,
+	anchor: false
 }</code></pre>
 		
 		<a name="methods"></a>

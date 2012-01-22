@@ -1,5 +1,5 @@
 /**
- * jQuery.popover plugin v1.0.4
+ * jQuery.popover plugin v1.0.5
  * By Davey IJzermans
  * See http://wp.me/p12l3P-gT for details
  * http://daveyyzermans.nl/
@@ -20,6 +20,7 @@
 		fadeSpeed: 160, //how fast to fade out popovers when destroying or hiding
 		trigger: 'click', //how to trigger the popover: click, hover or manual
 		preventDefault: true, //preventDefault actions on the element on which the popover is called
+		stopChildrenPropagation: true, //prevent propagation on popover children
 		hideOnHTMLClick: true, //hides the popover when clicked outside of it
 		anchor: false //anchor the popover to a different element
 	}
@@ -42,10 +43,12 @@
 						.append('<div class="arrow" />')
 						.append('<div class="wrap"></div>')
 						.appendTo('body')
-						.bind('click.popover', function(event) {
-							event.stopPropagation();
-						})
 						.hide();
+					
+					if(options.stopChildrenPropagation)
+						popover.children().bind('click.popover', function(event) {
+							event.stopPropagation();
+						});
 					
 					$this.bind('click.popover', function(event) {
 						if(options.preventDefault)
