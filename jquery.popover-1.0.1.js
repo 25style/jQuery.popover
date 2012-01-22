@@ -1,5 +1,5 @@
 /**
- * jQuery.popover plugin v1.0.0
+ * jQuery.popover plugin v1.0.1
  * By Davey IJzermans
  * See http://wp.me/p12l3P-gT for details
  * http://daveyyzermans.nl/
@@ -153,13 +153,14 @@
 						popover.unbind('click.popover')
 					}
 					
-					if(trigger === 'hover')
-						$this.bind('hover.popover', function(event) {
+					if(trigger === 'hover') {
+						$this.bind('mouseenter.popover', function(event) {
 							$this.popover('show');
-						}, function(event) {
+						});
+						$this.bind('mouseleave.popover', function(event) {
 							$this.popover('fadeOut');
 						});
-					else
+					} else
 						$this.unbind('hover.popover');
 				}
 			});
