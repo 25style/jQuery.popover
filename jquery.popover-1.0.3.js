@@ -1,5 +1,5 @@
 /**
- * jQuery.popover plugin v1.0.3
+ * jQuery.popover plugin v1.0.4
  * By Davey IJzermans
  * See http://wp.me/p12l3P-gT for details
  * http://daveyyzermans.nl/
@@ -42,12 +42,13 @@
 						.append('<div class="arrow" />')
 						.append('<div class="wrap"></div>')
 						.appendTo('body')
-						.click(function(event) {
-							if(options.preventDefault)
-								event.preventDefault();
-							event.stopPropagation();
-						})
 						.hide();
+					
+					$this.bind('click.popover', function(event) {
+						if(options.preventDefault)
+							event.preventDefault();
+						event.stopPropagation();
+					});
 					
 					if(options.anchor)
 						if(!options.anchor instanceof jQuery)
@@ -104,6 +105,7 @@
 			return this.each(function() {
 				var $this = $(this);
 				var data = $this.data('popover');
+				$this.unbind('.popover');
 				$(window).unbind('.popover');
 				data.popover.remove();
 				$this.removeData('popover');

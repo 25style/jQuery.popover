@@ -5,6 +5,9 @@ documentation, visit http://daveyyzermans.nl/jquery/popover/demo.html
 
 # Changelog
 
+v1.0.4
+The preventDefault parameter now does what it's supposed to. preventDefault on the element the popover's invoked on instead of the popover itself.
+
 v1.0.3
 Again some small changes to the hover trigger. Hovering the popover now makes it stay.
 
