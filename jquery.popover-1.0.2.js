@@ -1,5 +1,5 @@
 /**
- * jQuery.popover plugin v1.0.1
+ * jQuery.popover plugin v1.0.2
  * By Davey IJzermans
  * See http://wp.me/p12l3P-gT for details
  * http://daveyyzermans.nl/
@@ -20,7 +20,8 @@
 		fadeSpeed: 160, //how fast to fade out popovers when destroying or hiding
 		trigger: 'click', //how to trigger the popover: click, hover or manual
 		preventDefault: true, //preventDefault actions on the element on which the popover is called
-		hideOnHTMLClick: true //hides the popover when clicked outside of it
+		hideOnHTMLClick: true, //hides the popover when clicked outside of it
+		anchor: false //anchor the popover to a different element
 	}
 	var options = {};
 	var methods = {
@@ -36,8 +37,6 @@
 				var data = $this.data('popover');
 				
 				if(!data) {
-					var coordinates = $this.offset();
-					var top = coordinates.top + $this.outerHeight() + options.topOffset;
 					var popover = $('<div class="popover" />')
 						.addClass(options.classes)
 						.append('<div class="arrow" />')
@@ -49,7 +48,11 @@
 							event.stopPropagation();
 						})
 						.hide();
-						
+					
+					if(options.anchor)
+						if(!options.anchor instanceof jQuery)
+							options.anchor = $(options.anchor)
+					
 					var data = {
 						target: $this,
 						popover: popover,
@@ -67,15 +70,33 @@
 					if(options.url)
 						$this.popover('ajax', options.url);
 					
-					var left = coordinates.left - popover.outerWidth() / 2 + $this.outerWidth() / 2  + options.leftOffset;
-					popover.css({ top: top, left: left });
 					$(this).data('popover', data);
 					
+					$this.popover('reposition');
 					$this.popover('setTrigger', options.trigger);
+					
 					if(options.hideOnHTMLClick)
 						$('html').unbind('click.popover').bind('click.popover', function(event) {
 							$('html').popover('fadeOutAll');
 						});
+				}
+			});
+		},
+		reposition: function() {
+			return this.each(function() {
+				var $this = $(this);
+				var data = $this.data('popover');
+				
+				if(data) {
+					var popover = data.popover;
+					var options = data.options;
+					var $anchor = options.anchor ? $(options.anchor) : $this;
+					
+					var coordinates = $anchor.offset();
+					var top = coordinates.top + $anchor.outerHeight() + options.topOffset;
+					var left = coordinates.left - popover.outerWidth() / 2 + $anchor.outerWidth() / 2  + options.leftOffset;
+					
+					popover.css({ top: top, left: left });
 				}
 			});
 		},
@@ -94,11 +115,7 @@
 				var data = $this.data('popover');
 				if(data) {
 					var popover = data.popover;
-					var options = data.options;
-					var coordinates = $this.offset();
-					var top = coordinates.top + $this.outerHeight() + options.topOffset;
-					var left = coordinates.left - popover.outerWidth() / 2 + $this.outerWidth() / 2  + options.leftOffset;
-					popover.css({ top: top, left: left });
+					$this.popover('reposition');
 					popover.show();
 				}
 			});
