@@ -5,6 +5,9 @@ documentation, visit http://daveyyzermans.nl/jquery/popover/demo.html
 
 # Changelog
 
+v1.0.2
+Added 'anchor' parameter, for attaching the popover to another element
+
 v1.0.1
 Fixed hover trigger
 

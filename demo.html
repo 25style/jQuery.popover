@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="popover.css" type="text/css" media="screen" />
 		
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script type="text/javascript" src="jquery.popover-1.0.1.js"></script>
+		<script type="text/javascript" src="jquery.popover-1.0.2.js"></script>
 		<script type="text/javascript">
 		/* <![CDATA[ */
 			jQuery(document).ready(function($) {
@@ -363,6 +363,7 @@ $(&quot;#ex7b&quot;).click(function(event) {
 					<th>Preffered type</th>
 					<th>Description</th>
 					<th>Default</th>
+					<th>Since</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -371,66 +372,84 @@ $(&quot;#ex7b&quot;).click(function(event) {
 					<td>int</td>
 					<td><a name="parameters_topOffset" title="topOffset"></a>Offset the popover by y px vertically (positive numbers move the popover down)</td>
 					<td>0</td>
+					<th>v1.0.0</th>
 				</tr>
 				<tr>
 					<td>leftOffset</td>
 					<td>int</td>
 					<td><a name="parameters_leftOffset" title="leftOffset"></a>Offset the popover by x px horizontally (positive numbers move the popover to the right)</td>
 					<td>0</td>
+					<th>v1.0.0</th>
 				</tr>
 				<tr>
 					<td>title</td>
 					<td>bool|string</td>
 					<td><a name="parameters_title" title="title"></a>Contents of the heading. Set to false for no title.</td>
 					<td>false</td>
+					<th>v1.0.0</th>
 				</tr>
 				<tr>
 					<td>content</td>
 					<td>bool|string</td>
 					<td><a name="parameters_content" title="content"></a>Contents of the body of the popover. Set to false for no body.</td>
 					<td>false</td>
+					<th>v1.0.0</th>
 				</tr>
 				<tr>
 					<td>url</td>
 					<td>bool|string</td>
 					<td><a name="parameters_url" title="url"></a>Automatically load an URL into the content field on initialization, if set to an url.</td>
 					<td>false</td>
+					<th>v1.0.0</th>
 				</tr>
 				<tr>
 					<td>classes</td>
 					<td>string</td>
 					<td><a name="parameters_classes" title="classes"></a>Add stylesheet classes to the popover box on initalization, for example "large".</td>
 					<td>&quot;&quot;</td>
+					<th>v1.0.0</th>
 				</tr>
 				<tr>
 					<td>arrow</td>
 					<td>string|object</td>
 					<td><a name="parameters_arrow" title="arrow"></a>Determine place of the arrow. Set to &quot;auto&quot; for automatic placement. <em>Yet to be implemented</em></td>
 					<td>&quot;auto&quot;</td>
+					<th>v1.0.0</th>
 				</tr>
 				<tr>
 					<td>fadeSpeed</td>
 					<td>int</td>
 					<td><a name="parameters_fadeSpeed" title="fadeSpeed"></a>How fast to fade this popover out when fading out.</td>
 					<td>160</td>
+					<th>v1.0.0</th>
 				</tr>
 				<tr>
 					<td>trigger</td>
 					<td>string</td>
 					<td><a name="parameters_trigger" title="trigger"></a>How to trigger the popover. &quot;click&quot; activates the popover when the linked-to element is clicked, &quot;hover&quot; when it's hovered on, and everything else sets it to manual.</td>
 					<td>&quot;click&quot;</td>
+					<th>v1.0.0</th>
 				</tr>
 				<tr>
 					<td>preventDefault</td>
 					<td>bool</td>
 					<td><a name="parameters_preventDefault" title="preventDefault"></a>Execute <code>event.preventDefault()</code> method on the element the popover is called on. Set this to false if you want the element (for example an <code>a</code>-element) to still execute code already bound with <code>.click()</code>.</td>
 					<td>true</td>
+					<th>v1.0.0</th>
 				</tr>
 				<tr>
 					<td>hideOnHTMLClick</td>
 					<td>bool</td>
 					<td><a name="parameters_hideOnHTMLClick" title="hideOnHTMLClick"></a>Hide all popovers when clicked outside of them. <em>This is currently a semi-global variable. See <a href="#methods_fadeOutAll">this</a>.</em></td>
 					<td>true</td>
+					<th>v1.0.0</th>
+				</tr>
+				<tr>
+					<td>anchor</td>
+					<td>bool|string|jQuery</td>
+					<td><a name="parameters_anchor" title="anchor"></a>Use this parameter to anchor the popover to a different element than it's invoked on. This is useful when using <code>{ trigger: 'hover' }</code>.</td>
+					<td>false</td>
+					<th>v1.0.1</th>
 				</tr>
 			</tbody>
 		</table>
