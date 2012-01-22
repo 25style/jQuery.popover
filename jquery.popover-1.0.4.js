@@ -42,6 +42,9 @@
 						.append('<div class="arrow" />')
 						.append('<div class="wrap"></div>')
 						.appendTo('body')
+						.bind('click.popover', function(event) {
+							event.stopPropagation();
+						})
 						.hide();
 					
 					$this.bind('click.popover', function(event) {
