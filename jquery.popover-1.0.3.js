@@ -1,5 +1,5 @@
 /**
- * jQuery.popover plugin v1.0.2
+ * jQuery.popover plugin v1.0.3
  * By Davey IJzermans
  * See http://wp.me/p12l3P-gT for details
  * http://daveyyzermans.nl/
@@ -93,10 +93,10 @@
 					var $anchor = options.anchor ? $(options.anchor) : $this;
 					
 					var coordinates = $anchor.offset();
-					var top = coordinates.top + $anchor.outerHeight() + options.topOffset;
-					var left = coordinates.left - popover.outerWidth() / 2 + $anchor.outerWidth() / 2  + options.leftOffset;
+					var top = coordinates.top + $anchor.outerHeight();
+					var left = coordinates.left - popover.outerWidth() / 2 + $anchor.outerWidth() / 2;
 					
-					popover.css({ top: top, left: left });
+					popover.css({ top: top, left: left, marginTop: options.topOffset, marginLeft: options.leftOffset });
 				}
 			});
 		},
@@ -116,7 +116,7 @@
 				if(data) {
 					var popover = data.popover;
 					$this.popover('reposition');
-					popover.show();
+					popover.clearQueue().show();
 				}
 			});
 		},
@@ -135,7 +135,7 @@
 				if(data) {
 					var popover = data.popover;
 					var options = data.options;
-					popover.fadeOut(ms ? ms : options.fadeSpeed);
+					popover.delay(100).fadeOut(ms ? ms : options.fadeSpeed);
 				}
 			});
 		},
@@ -171,14 +171,15 @@
 					}
 					
 					if(trigger === 'hover') {
-						$this.bind('mouseenter.popover', function(event) {
+						$this.add(popover).bind('mousemove.popover', function(event) {
 							$this.popover('show');
 						});
-						$this.bind('mouseleave.popover', function(event) {
+						$this.add(popover).bind('mouseleave.popover', function(event) {
 							$this.popover('fadeOut');
 						});
-					} else
-						$this.unbind('hover.popover');
+					} else {
+						$this.add(popover).unbind('mousemove.popover').unbind('mouseleave.popover');
+					}
 				}
 			});
 		},
