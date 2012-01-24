@@ -1,5 +1,5 @@
 /**
- * jQuery.popover plugin v1.0.5
+ * jQuery.popover plugin v1.0.6
  * By Davey IJzermans
  * See http://wp.me/p12l3P-gT for details
  * http://daveyyzermans.nl/
@@ -124,7 +124,7 @@
 				if(data) {
 					var popover = data.popover;
 					$this.popover('reposition');
-					popover.clearQueue().show();
+					popover.clearQueue().css({ zIndex: 950 }).show();
 				}
 			});
 		},
@@ -133,7 +133,7 @@
 				var $this = $(this);
 				var data = $this.data('popover');
 				if(data)
-					data.popover.hide();
+					data.popover.hide().css({ zIndex: 949 });
 			});
 		},
 		fadeOut: function(ms) {
@@ -143,18 +143,18 @@
 				if(data) {
 					var popover = data.popover;
 					var options = data.options;
-					popover.delay(100).fadeOut(ms ? ms : options.fadeSpeed);
+					popover.delay(100).css({ zIndex: 949 }).fadeOut(ms ? ms : options.fadeSpeed);
 				}
 			});
 		},
 		hideAll: function() {
 			return this.each(function() {
-				$('.popover').hide();
+				$('.popover').hide().css({ zIndex: 949 });
 			});
 		},
 		fadeOutAll: function(ms) {
 			return this.each(function() {
-				$('.popover').fadeOut(ms ? ms : options.fadeSpeed);
+				$('.popover').css({ zIndex: 949 }).fadeOut(ms ? ms : options.fadeSpeed);
 			});
 		},
 		setTrigger: function(trigger) {
