@@ -1,5 +1,5 @@
 /**
- * jQuery.popover plugin v1.0.6
+ * jQuery.popover plugin v1.0.7
  * By Davey IJzermans
  * See http://wp.me/p12l3P-gT for details
  * http://daveyyzermans.nl/
@@ -187,6 +187,20 @@
 						});
 					} else {
 						$this.add(popover).unbind('mousemove.popover').unbind('mouseleave.popover');
+					}
+					
+					if(trigger === 'focus') {
+						$this.add(popover).bind('focus.popover', function(event) {
+							$this.popover('show');
+						});
+						$this.add(popover).bind('blur.popover', function(event) {
+							$this.popover('fadeOut');
+						});
+						$this.bind('click.popover', function(event) {
+							event.stopPropagation();
+						})
+					} else {
+						$this.add(popover).unbind('focus.popover').unbind('blur.popover').unbind('click.popover');
 					}
 				}
 			});

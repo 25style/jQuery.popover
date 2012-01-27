@@ -5,6 +5,9 @@ documentation, visit http://daveyyzermans.nl/jquery/popover/demo.html
 
 ## Changelog
 
+### v1.0.7
+- Added focus-trigger.
+
 ### v1.0.6
 - Some z-index tweaks to make the popover appear on top of each other instead of the order they were instantiated.
 
