@@ -5,6 +5,10 @@ documentation, visit http://daveyyzermans.nl/jquery/popover/demo.html
 
 ## Changelog
 
+### v1.0.8
+- Added automatic reposition.
+- Changed offset logic, see docs.
+
 ### v1.0.7
 - Added focus-trigger.
 
