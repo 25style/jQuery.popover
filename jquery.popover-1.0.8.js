@@ -367,9 +367,11 @@
 				
 				if(data) {
 					var popover = data.popover;
+					var options = data.options;
+					var $anchor = options.anchor ? $(options.anchor) : $this;
 					
 					if(trigger === 'click') {
-						$this.unbind('click').bind('click', function(event) {
+						$anchor.unbind('click').bind('click', function(event) {
 							event.preventDefault();
 							event.stopPropagation();
 							$this.popover('show');
@@ -378,33 +380,33 @@
 							event.stopPropagation();
 						});
 					} else {
-						$this.unbind('click.popover');
+						$anchor.unbind('click');
 						popover.unbind('click.popover')
 					}
 					
 					if(trigger === 'hover') {
-						$this.add(popover).bind('mousemove.popover', function(event) {
+						$anchor.add(popover).bind('mousemove.popover', function(event) {
 							$this.popover('show');
 						});
-						$this.add(popover).bind('mouseleave.popover', function(event) {
+						$anchor.add(popover).bind('mouseleave.popover', function(event) {
 							$this.popover('fadeOut');
 						});
 					} else {
-						$this.add(popover).unbind('mousemove.popover').unbind('mouseleave.popover');
+						$anchor.add(popover).unbind('mousemove.popover').unbind('mouseleave.popover');
 					}
 					
 					if(trigger === 'focus') {
-						$this.add(popover).bind('focus.popover', function(event) {
+						$anchor.add(popover).bind('focus.popover', function(event) {
 							$this.popover('show');
 						});
-						$this.add(popover).bind('blur.popover', function(event) {
+						$anchor.add(popover).bind('blur.popover', function(event) {
 							$this.popover('fadeOut');
 						});
-						$this.bind('click.popover', function(event) {
+						$anchor.bind('click.popover', function(event) {
 							event.stopPropagation();
 						})
 					} else {
-						$this.add(popover).unbind('focus.popover').unbind('blur.popover').unbind('click.popover');
+						$anchor.add(popover).unbind('focus.popover').unbind('blur.popover').unbind('click.popover');
 					}
 				}
 			});
