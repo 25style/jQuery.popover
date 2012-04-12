@@ -334,7 +334,7 @@ $(&quot;#ex6b&quot;).click(function(event) {
 	title: &quot;What's this&quot;,
 	content: &quot;...&quot;,
 	classes: &quot;wider&quot;
-&quot;);
+});
 $(&quot;#ex7b&quot;).click(function(event) {
 	event.preventDefault();
 	event.stopPropagation();
@@ -342,13 +342,13 @@ $(&quot;#ex7b&quot;).click(function(event) {
 		'ajax',
 		&quot;ajax.html&quot;
 	).popover('title', &quot;It's AJAX content!&quot;).popover('show');
-&quot;);</code></pre>
+});</code></pre>
 		
 		<p>Alternatively, you can set an URL in the initialization parameters to load an URL immediately on setup, like so:</p>
 		
 		<pre><code>$(&quot;#selector&quot;).popover({
 	url: &quot;test.html&quot;
-	);</code></pre>
+	});</code></pre>
 		
 		<a name="parameters"></a>
 		<h3>Parameters</h3>
