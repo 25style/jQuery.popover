@@ -1,5 +1,5 @@
 /**
- * jQuery.popover plugin v1.0.8
+ * jQuery.popover plugin v1.0.9
  * By Davey IJzermans
  * See http://wp.me/p12l3P-gT for details
  * http://daveyyzermans.nl/
@@ -142,11 +142,12 @@
 						$('<div class="content" />')
 							.html(options.content instanceof jQuery ? options.content.html() : options.content)
 							.appendTo(popover.find('.wrap'));
-					if(options.url)
-						$this.popover('ajax', options.url);
 					
 					$this.data('popover', data);
 					popovers.push($this);
+					
+					if(options.url)
+						$this.popover('ajax', options.url);
 					
 					$this.popover('reposition');
 					$this.popover('setTrigger', options.trigger);
