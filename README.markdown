@@ -5,6 +5,9 @@ documentation, visit http://daveyyzermans.nl/jquery/popover/demo.html
 
 ## Changelog
 
+### v1.1.0
+- Fixed hideOnHTMLClick on iDevices
+
 ### v1.0.9
 - Fixed url parameter
 

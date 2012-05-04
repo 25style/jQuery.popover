@@ -1,5 +1,5 @@
 /**
- * jQuery.popover plugin v1.0.9
+ * jQuery.popover plugin v1.1.0
  * By Davey IJzermans
  * See http://wp.me/p12l3P-gT for details
  * http://daveyyzermans.nl/
@@ -152,10 +152,14 @@
 					$this.popover('reposition');
 					$this.popover('setTrigger', options.trigger);
 					
-					if(options.hideOnHTMLClick)
-						$('html').unbind('click.popover').bind('click.popover', function(event) {
+					if(options.hideOnHTMLClick) {
+						var hideEvent = "click.popover";
+						if ("ontouchstart" in document.documentElement)
+							hideEvent = 'touchstart.popover';
+						$('html').unbind(hideEvent).bind(hideEvent, function(event) {
 							$('html').popover('fadeOutAll');
 						});
+					}
 					
 					if(options.autoReposition) {
 						var repos_function = function(event) {
